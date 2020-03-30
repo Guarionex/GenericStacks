@@ -12,7 +12,7 @@ class StackTest {
 
     @BeforeEach
     void setUp() {
-        _sut = new Stack(Integer.class);
+        _sut = new Stack();
         _chance = new Chance();
     }
 
@@ -118,7 +118,7 @@ class StackTest {
         var expectedIndex = 2;
         var itemToSearch = "FindMe";
 
-        var sut = new Stack<String>(String.class);
+        var sut = new Stack<String>();
         sut.push(_chance.word());
         sut.push(itemToSearch);
         sut.push(_chance.word());
