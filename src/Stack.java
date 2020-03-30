@@ -1,45 +1,32 @@
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import org.apache.commons.lang3.NotImplementedException;
 
-public class Stack<T> {
-    private ArrayList<T> _stackArray;
+public class Stack {
 
     public Stack()
     {
-        _stackArray = new ArrayList<>();
     }
 
     public int size() {
-        return _stackArray.size();
+        throw new NotImplementedException("Not Implemented");
     }
 
-    public void push(T item) {
-        _stackArray.add(item);
+    public void push(Object item) {
+        throw new NotImplementedException("Not Implemented");
     }
 
-    @SuppressWarnings("unchecked")
-    public T pop() {
-        return _stackArray.remove(_stackArray.size() - 1);
+    public Object pop() {
+        throw new NotImplementedException("Not Implemented");
     }
 
-    public T peek() {
-        return _stackArray.get(_stackArray.size() - 1);
+    public Object peek() {
+        throw new NotImplementedException("Not Implemented");
     }
 
     public boolean empty() {
-        return _stackArray.size() == 0;
+        throw new NotImplementedException("Not Implemented");
     }
 
-    public int search(T itemToSearch) {
-        var index = 0;
-        for (int i = 0; i < _stackArray.size(); i++)
-        {
-            if(itemToSearch.equals(_stackArray.get(i)))
-            {
-                index = i;
-            }
-        }
-
-        return (index - _stackArray.size()) * -1;
+    public int search(Object itemToSearch) {
+        throw new NotImplementedException("Not Implemented");
     }
 }
