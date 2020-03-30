@@ -101,20 +101,16 @@ class StackTest {
     }
 
     @Test
-    void GivenStackWithItems_WhenSearching_Returns1BasedIndexFromTop() throws ChanceException {
+    void GivenStackWithIntItems_WhenSearching_Returns1BasedIndexFromTop() throws ChanceException {
         var expectedIndex = 2;
         var itemToSearch = _chance.integer(10, 19);
 
-        _sut.push(_chance.word());
+        _sut.push(_chance.integer(0, 9));
         _sut.push(itemToSearch);
         _sut.push(_chance.integer(0, 9));
 
         var actualIndex = _sut.search(itemToSearch);
 
         assertEquals(expectedIndex, actualIndex);
-    }
-
-    @AfterEach
-    void tearDown() {
     }
 }

@@ -12,14 +12,14 @@ public class Stack {
         return _stackArray.length;
     }
 
-    public void push(Object item) {
+    public void push(int item) {
         var resizedArray = new int[_stackArray.length + 1];
         System.arraycopy(_stackArray, 0, resizedArray, 0, _stackArray.length);
         _stackArray = resizedArray;
         _stackArray[_stackArray.length - 1] = (int) item;
     }
 
-    public Object pop() {
+    public int pop() {
         var poppedItem = _stackArray[_stackArray.length - 1];
         var resizedArray = new int[_stackArray.length - 1];
         System.arraycopy(_stackArray, 0, resizedArray, 0, resizedArray.length);
@@ -27,7 +27,7 @@ public class Stack {
         return poppedItem;
     }
 
-    public Object peek() {
+    public int peek() {
         return _stackArray[_stackArray.length - 1];
     }
 
@@ -35,11 +35,11 @@ public class Stack {
         return _stackArray.length == 0;
     }
 
-    public int search(Object itemToSearch) {
+    public int search(int itemToSearch) {
         var index = 0;
         for (int i = 0; i < _stackArray.length; i++)
         {
-            if(itemToSearch.equals(_stackArray[i]))
+            if(itemToSearch == _stackArray[i])
             {
                 index = i;
             }
