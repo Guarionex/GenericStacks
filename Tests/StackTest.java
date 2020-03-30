@@ -115,7 +115,7 @@ class StackTest {
     }
 
     @Test
-    void GivenStackWithStringItems_WhenSearching_Returns1BasedIndexFromTop() throws ChanceException {
+    void GivenStackWithStringItems_WhenSearching_Returns1BasedIndexFromTop() {
         var expectedIndex = 2;
         var itemToSearch = "FindMe";
 
