@@ -24,5 +24,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="com.github.open-fidias:chance4j:1.0.2" level="project" />
   </component>
 </module>
