@@ -105,7 +105,7 @@ class StackTest {
         var expectedIndex = 2;
         var itemToSearch = _chance.integer(10, 19);
 
-        _sut.push(_chance.integer(0, 9));
+        _sut.push(_chance.word());
         _sut.push(itemToSearch);
         _sut.push(_chance.integer(0, 9));
 
