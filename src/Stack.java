@@ -19,4 +19,16 @@ public class Stack {
     public Object pop() {
         return _stackArrayList.remove(_stackArrayList.size() - 1);
     }
+
+    public Object peek() {
+        return _stackArrayList.get(_stackArrayList.size() - 1);
+    }
+
+    public boolean empty() {
+        return _stackArrayList.size() == 0;
+    }
+
+    public Object search(Object itemToSearch) {
+        return (_stackArrayList.indexOf(itemToSearch) - _stackArrayList.size()) * -1;
+    }
 }

@@ -18,7 +18,7 @@ class StackTest {
     }
 
     @Test
-    void GivenSUT_WhenStackIsEmpty_ThenSizeReturns0()
+    void GivenEmptyStack_WhenCallingSize_ThenReturn0()
     {
         var expectedSize = 0;
 
@@ -28,7 +28,7 @@ class StackTest {
     }
 
     @Test
-    void GivenSUT_WhenPushing_ThenSizeReturns1() throws ChanceException {
+    void GivenStack_WhenPushing_ThenSizeReturns1() throws ChanceException {
         var expectedSize = 1;
         var item = _chance.integer();
 
@@ -39,7 +39,7 @@ class StackTest {
     }
 
     @Test
-    void GivenSUT_WhenPoping_ThenReturnsLastItem() throws ChanceException {
+    void GivenStack_WhenPoping_ThenReturnsTopItem() throws ChanceException {
         var expectedItem = _chance.integer();
 
         _sut.push(expectedItem);
@@ -49,7 +49,7 @@ class StackTest {
     }
 
     @Test
-    void GivenSUT_WhenPopingStackOfSize1_ThenSizeReturns0() throws ChanceException {
+    void GivenStackOfSize1_WhenPoping_ThenSizeReturns0() throws ChanceException {
         var expectedSize = 0;
         var item = _chance.integer();
 
@@ -59,6 +59,59 @@ class StackTest {
 
 
         assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    void GivenStack_WhenPeeking_ReturnsTopItem() throws ChanceException {
+        var expectedItem = _chance.integer();
+
+        _sut.push(expectedItem);
+        var actualItem = _sut.peek();
+
+        assertEquals(expectedItem, actualItem);
+    }
+
+    @Test
+    void GivenStackSize1_WhenPeeking_ThenSizeReturns1() throws ChanceException {
+        var expectedSize = 1;
+        var item = _chance.integer();
+
+        _sut.push(item);
+        _sut.peek();
+        var actualSize = _sut.size();
+
+
+        assertEquals(expectedSize, actualSize);
+    }
+
+    @Test
+    void GivenEmptyStack_WhenCallingEmpty_ThenReturnTrue()
+    {
+        var actual = _sut.empty();
+
+        assertTrue(actual);
+    }
+
+    @Test
+    void GivenStackWithItems_WhenCallingEmpty_ThenReturnFalse() throws ChanceException {
+        _sut.push(_chance.integer());
+        var actual = _sut.empty();
+
+        assertFalse(actual);
+    }
+
+    @Test
+    void GivenStackWithItems_WhenSearching_Returns1BasedIndexFromTop() throws ChanceException {
+        var expectedIndex = 2;
+        var itemToSearch = _chance.integer();
+
+        _sut.push(_chance.integer());
+        _sut.push(itemToSearch);
+        _sut.push(_chance.integer());
+
+        var actualIndex = _sut.search(itemToSearch);
+
+        assertEquals(expectedIndex, actualIndex);
     }
 
     @AfterEach
