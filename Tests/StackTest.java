@@ -1,6 +1,5 @@
 import br.com.fidias.chance4j.Chance;
 import br.com.fidias.chance4j.ChanceException;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -126,5 +125,20 @@ class StackTest {
         var actualIndex = _sut.search(itemToSearch);
 
         assertEquals(expectedIndex, actualIndex);
+    }
+
+    @Test
+    void GivenStackWithMixedTypeItems_WhenAddingAllItems_ThenExceptionIsThrown() throws ChanceException {
+        _sut.push(_chance.integer());
+        _sut.push(_chance.integer());
+        _sut.push(_chance.word());
+
+        assertThrows(ClassCastException.class, () -> {
+            var total = (int) _sut.pop();
+            var originalSize = _sut.size();
+            for(int i = 0; i < originalSize; i++) {
+                total += (int) _sut.pop();
+            }
+        });
     }
 }
