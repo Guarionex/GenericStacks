@@ -7,12 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StackTest {
 
-    private Stack _sut;
+    private Stack<Integer> _sut;
     private Chance _chance;
 
     @BeforeEach
     void setUp() {
-        _sut = new Stack();
+        _sut = new Stack(Integer.class);
         _chance = new Chance();
     }
 
@@ -118,27 +118,29 @@ class StackTest {
         var expectedIndex = 2;
         var itemToSearch = "FindMe";
 
-        _sut.push(_chance.word());
-        _sut.push(itemToSearch);
-        _sut.push(_chance.word());
+        var sut = new Stack<String>(String.class);
+        sut.push(_chance.word());
+        sut.push(itemToSearch);
+        sut.push(_chance.word());
 
-        var actualIndex = _sut.search(itemToSearch);
+        var actualIndex = sut.search(itemToSearch);
 
         assertEquals(expectedIndex, actualIndex);
     }
 
-    @Test
-    void GivenStackWithMixedTypeItems_WhenAddingAllItems_ThenExceptionIsThrown() throws ChanceException {
-        _sut.push(_chance.integer());
-        _sut.push(_chance.integer());
-        _sut.push(_chance.word());
-
-        assertThrows(ClassCastException.class, () -> {
-            var total = (int) _sut.pop();
-            var originalSize = _sut.size();
-            for(int i = 0; i < originalSize; i++) {
-                total += (int) _sut.pop();
-            }
-        });
-    }
+//    Gives Compile Error
+//    @Test
+//    void GivenStackWithMixedTypeItems_WhenAddingAllItems_ThenExceptionIsThrown() throws ChanceException {
+//        _sut.push(_chance.integer());
+//        _sut.push(_chance.integer());
+//        _sut.push(_chance.word());
+//
+//        assertThrows(ClassCastException.class, () -> {
+//            var total = (int) _sut.pop();
+//            var originalSize = _sut.size();
+//            for(int i = 0; i < originalSize; i++) {
+//                total += (int) _sut.pop();
+//            }
+//        });
+//    }
 }
