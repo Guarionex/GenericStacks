@@ -31,4 +31,14 @@ public class Stack {
     public Object search(Object itemToSearch) {
         return (_stackArrayList.indexOf(itemToSearch) - _stackArrayList.size()) * -1;
     }
+
+    public Object addAll() {
+        var total = (int) _stackArrayList.get(0);
+        for (var i = 1; i < _stackArrayList.size(); i++)
+        {
+            total += (int) _stackArrayList.get(i);
+        }
+
+        return total;
+    }
 }

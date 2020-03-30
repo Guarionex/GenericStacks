@@ -114,6 +114,38 @@ class StackTest {
         assertEquals(expectedIndex, actualIndex);
     }
 
+    @Test
+    void GivenStackWithItems_WhenAddingAllItems_ReturnsTotalValue() throws ChanceException {
+        var item1 = _chance.integer(0, 10);
+        var item2 = _chance.integer(0, 10);
+        var item3 = _chance.integer(0, 10);
+        var expectedTotal = item3 + item2 + item1;
+
+        _sut.push(item1);
+        _sut.push(item2);
+        _sut.push(item3);
+
+        var actualTotal = _sut.addAll();
+
+        assertEquals(expectedTotal, actualTotal);
+    }
+
+    @Test
+    void GivenStackWithStringItems_WhenAddingAllItems_ReturnsTotalValue() throws ChanceException {
+        var item1 = _chance.word();
+        var item2 = _chance.word();
+        var item3 = _chance.word();
+        var expectedTotal = item3 + item2 + item1;
+
+        _sut.push(item1);
+        _sut.push(item2);
+        _sut.push(item3);
+
+        var actualTotal = _sut.addAll();
+
+        assertEquals(expectedTotal, actualTotal);
+    }
+
     @AfterEach
     void tearDown() {
     }
