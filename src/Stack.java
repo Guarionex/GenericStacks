@@ -1,44 +1,50 @@
 import java.util.ArrayList;
 
 public class Stack {
-    private ArrayList _stackArrayList;
+    private int[] _stackArray;
 
     public Stack()
     {
-        _stackArrayList = new ArrayList();
+        _stackArray = new int[]{};
     }
 
     public int size() {
-        return _stackArrayList.size();
+        return _stackArray.length;
     }
 
     public void push(Object item) {
-        _stackArrayList.add(item);
+        var resizedArray = new int[_stackArray.length + 1];
+        System.arraycopy(_stackArray, 0, resizedArray, 0, _stackArray.length);
+        _stackArray = resizedArray;
+        _stackArray[_stackArray.length - 1] = (int) item;
     }
 
     public Object pop() {
-        return _stackArrayList.remove(_stackArrayList.size() - 1);
+        var poppedItem = _stackArray[_stackArray.length - 1];
+        var resizedArray = new int[_stackArray.length - 1];
+        System.arraycopy(_stackArray, 0, resizedArray, 0, resizedArray.length);
+        _stackArray = resizedArray;
+        return poppedItem;
     }
 
     public Object peek() {
-        return _stackArrayList.get(_stackArrayList.size() - 1);
+        return _stackArray[_stackArray.length - 1];
     }
 
     public boolean empty() {
-        return _stackArrayList.size() == 0;
+        return _stackArray.length == 0;
     }
 
-    public Object search(Object itemToSearch) {
-        return (_stackArrayList.indexOf(itemToSearch) - _stackArrayList.size()) * -1;
-    }
-
-    public Object addAll() {
-        var total = (int) _stackArrayList.get(0);
-        for (var i = 1; i < _stackArrayList.size(); i++)
+    public int search(Object itemToSearch) {
+        var index = 0;
+        for (int i = 0; i < _stackArray.length; i++)
         {
-            total += (int) _stackArrayList.get(i);
+            if(itemToSearch.equals(_stackArray[i]))
+            {
+                index = i;
+            }
         }
 
-        return total;
+        return (index - _stackArray.length) * -1;
     }
 }
