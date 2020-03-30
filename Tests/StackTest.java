@@ -113,4 +113,18 @@ class StackTest {
 
         assertEquals(expectedIndex, actualIndex);
     }
+
+    @Test
+    void GivenStackWithStringItems_WhenSearching_Returns1BasedIndexFromTop() throws ChanceException {
+        var expectedIndex = 2;
+        var itemToSearch = "FindMe";
+
+        _sut.push(_chance.word());
+        _sut.push(itemToSearch);
+        _sut.push(_chance.word());
+
+        var actualIndex = _sut.search(itemToSearch);
+
+        assertEquals(expectedIndex, actualIndex);
+    }
 }
