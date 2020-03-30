@@ -6,14 +6,21 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class StackTest {
 
+    private Stack sut;
+
     @BeforeEach
     void setUp() {
+        sut = new Stack();
     }
 
     @Test
-    void AssertsTrue()
+    void GivenSUT_WhenStackIsEmpty_ThenSizeReturns0()
     {
-        assertTrue(true);
+        var expectedSize = 0;
+
+        var actualSize = sut.size();
+
+        assertEquals(expectedSize, actualSize);
     }
 
     @AfterEach
