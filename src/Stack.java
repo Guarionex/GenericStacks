@@ -1,11 +1,11 @@
 import java.util.ArrayList;
 
 public class Stack {
-    private int[] _stackArray;
+    private Object[] _stackArray;
 
     public Stack()
     {
-        _stackArray = new int[]{};
+        _stackArray = new Object[]{};
     }
 
     public int size() {
@@ -13,15 +13,15 @@ public class Stack {
     }
 
     public void push(Object item) {
-        var resizedArray = new int[_stackArray.length + 1];
+        var resizedArray = new Object[_stackArray.length + 1];
         System.arraycopy(_stackArray, 0, resizedArray, 0, _stackArray.length);
         _stackArray = resizedArray;
-        _stackArray[_stackArray.length - 1] = (int) item;
+        _stackArray[_stackArray.length - 1] = item;
     }
 
     public Object pop() {
         var poppedItem = _stackArray[_stackArray.length - 1];
-        var resizedArray = new int[_stackArray.length - 1];
+        var resizedArray = new Object[_stackArray.length - 1];
         System.arraycopy(_stackArray, 0, resizedArray, 0, resizedArray.length);
         _stackArray = resizedArray;
         return poppedItem;
